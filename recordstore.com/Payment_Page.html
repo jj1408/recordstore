@@ -1,0 +1,64 @@
+<DCOTYPE! HTML>
+<html>
+	<head>
+		<title>recordstore.com</title>
+		<link href="css/bootstrap/css/bootstrap.css" type="text/css" rel="stylesheet">
+		<link href="css/recordstore.css" type="text/css" rel="stylesheet">
+		<meta charset="UTF-8" />
+	    <script src="https://cdn.worldpay.com/v1/worldpay.js"></script>        
+	    <script type='text/javascript'>
+	    window.onload = function() {
+	      Worldpay.useTemplateForm({
+	        'clientKey':'T_C_67a61a20-adf7-4f9c-9df7-141447be382c',
+	        'form':'paymentForm',
+	        'paymentSection':'paymentSection',
+	        'display':'inline',
+	        'callback': function(obj) {
+	          if (obj && obj.token) {
+	            var _el = document.createElement('input');
+	            _el.value = obj.token;
+	            _el.type = 'hidden';
+	            _el.name = 'token';
+	            document.getElementById('paymentForm').appendChild(_el);
+	            document.getElementById('paymentForm').submit();
+	          }
+	        }
+	      });
+	    }
+	    </script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<h1>recordstore.com</h1>
+				<br>
+				<h2>Your one stop shop for all things vinyl</h2>
+				<br>
+      		</div>
+      	</div>	
+      	<div class=row>
+			<img src="images/chromeo.JPG" alt="Fancy Footwork" width="512" height="288" align="center">
+		</div>
+		<div class="row">
+			<h2>Shipping Address</h2>
+		</div>
+		<br>
+		<div>
+			<form action="address.asp" method="get">
+  				Name: <input type="text" name="name"><br>
+  				Address Line 1: <input type="text" name="add1"><br>
+	  			Address Line 2: <input type="text" name="add2"><br>
+	  			Address Line 3: <input type="text" name="add3"><br>
+	  			City: <input type="text" name="city"><br>
+	  			Postcode: <input type="text" name="pcode"><br>
+			</form>
+		</div>
+		<br>
+		<div>
+			<h2>Payment Details</h2>
+	      	<div id='paymentSection'></div>
+	      	<div>
+	      		<input type="submit" value="Place Order" onclick="Worldpay.submitTemplateForm()" />
+	      	</div>
+    	</form>
+	</body>
